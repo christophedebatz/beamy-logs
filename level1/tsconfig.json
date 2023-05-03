@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "rootDir": "./src",
+    "outDir": "./build",
+    "noImplicitAny": true,
+    "declaration": false,
+    "strictNullChecks": true,
+    "removeComments": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "NodeNext",
+    "target": "es2017",
+    "incremental": true
+  },
+  "include": ["*/**/*.ts"],
+  "exclude": [
+    "build",
+    "node_modules"
+  ]
+}
