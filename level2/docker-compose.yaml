@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  redis:
+    image: redis:5
+    container_name: redis
+    ports:
+      - "6379:6379"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    command: [ "redis-server", "--appendonly", "yes" ]
+    hostname: redis
+    network_mode: default
+
+  beamy-logs:
+    image: beamy-logs
+    container_name: beamy-logs
+    environment:
+      PORT: 3000
+    build: .
+    command: ['ls', '-alh', 'build']
+    ports:
+      - "1819:3000"
+    volumes:
+      - .:/app:delegated
+      - /app/node_modules
+    network_mode: default
+
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  redis-data:
+  database-data:
+    driver: local
